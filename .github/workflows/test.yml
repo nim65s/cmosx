@@ -20,6 +20,6 @@ jobs:
       - run: tree install
       - run: python -m pip install --user -U pip
       - run: python -m pip install --user cmeel-tinyxml
-      - run: CMAKE_PREFIX_PATH=install cmake -B build-b -S b
+      - run: CMAKE_PREFIX_PATH=install:$(python -m cmeel cmake) cmake -B build-b -S b
       - run: cmake --build build-b
       - run: cmake --build build-b -t test
