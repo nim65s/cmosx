@@ -18,7 +18,5 @@ jobs:
         if: matrix.os == 'macOS-latest'
       - run: tree install
       - run: cmake -B build-b -S b
-        env:
-          CMAKE_PREFIX_PATH: install
       - run: cmake --build build-b
       - run: cmake --build build-b -t test
