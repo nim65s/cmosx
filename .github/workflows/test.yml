@@ -14,6 +14,8 @@ jobs:
       - run: cmake --build build-a
       - run: cmake --build build-a -t test
       - run: cmake --build build-a -t install
+      - run: brew install tree
+        if: matrix.os == 'macOS-latest'
       - run: tree install
       - run: cmake -B build-b -S b
         env:
