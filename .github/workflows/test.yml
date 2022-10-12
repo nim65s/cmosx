@@ -1,0 +1,17 @@
+name: Tests
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cmake -B build-a -S a -DCMAKE_INSTALL_PREFIX=install
+      - run: cmake --build build-a
+      - run: cmake --build build-a -t test
+      - run: cmake --build build-a -t install
+      - run: cmake -B build-b -S b
+        env: CMAKE_PREFIX_PATH=install
+      - run: cmake --build build-b
+      - run: cmake --build build-b -t test
