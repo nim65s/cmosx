@@ -3,8 +3,5 @@
 #include <cmath>
 
 namespace MathFunctions {
-double sqrt(double x)
-{
-  return std::sqrt(x);
-}
-}
+double sqrt(double x) { return std::sqrt(x); }
+}  // namespace MathFunctions
