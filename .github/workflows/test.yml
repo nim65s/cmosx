@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
       - run: cmake -B build-a -S a -DCMAKE_INSTALL_PREFIX=install
       - run: cmake --build build-a
       - run: cmake --build build-a -t test
