@@ -9,7 +9,8 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "macos-latest"]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
       - run: cmake -B build-a -S a -DCMAKE_INSTALL_PREFIX=install
       - run: cmake --build build-a
       - run: cmake --build build-a -t test
@@ -17,6 +18,8 @@ jobs:
       - run: brew install tree
         if: matrix.os == 'macOS-latest'
       - run: tree install
+      - run: python -m pip install --user -U pip
+      - run: python -m pip install --user cmeel-tinyxml
       - run: CMAKE_PREFIX_PATH=install cmake -B build-b -S b
       - run: cmake --build build-b
       - run: cmake --build build-b -t test
