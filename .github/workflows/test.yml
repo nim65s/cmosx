@@ -7,8 +7,7 @@ jobs:
     runs-on: ${{ matrix.os}}
     strategy:
       matrix:
-        os: ["macos-latest"]
-        #os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu-latest", "macos-latest"]
     steps:
       - uses: actions/checkout@v2
       - run: cmake -B build-a -S a -DCMAKE_INSTALL_PREFIX=install
@@ -19,5 +18,7 @@ jobs:
         if: matrix.os == 'macOS-latest'
       - run: tree install
       - run: cmake -B build-b -S b
+        env:
+          CMAKE_PREFIX_PATH: install
       - run: cmake --build build-b
       - run: cmake --build build-b -t test
