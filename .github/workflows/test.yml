@@ -12,6 +12,7 @@ jobs:
       - run: cmake --build build-a -t test
       - run: cmake --build build-a -t install
       - run: cmake -B build-b -S b
-        env: CMAKE_PREFIX_PATH: install
+        env:
+          CMAKE_PREFIX_PATH: install
       - run: cmake --build build-b
       - run: cmake --build build-b -t test
