@@ -6,5 +6,6 @@ find_package(tinyxml REQUIRED)
 
 include(CTest)
 add_executable(test-sqrt test-sqrt.cpp)
-target_link_libraries(test-sqrt PRIVATE MathFunctions::MathFunctions cmeel::tinyxml)
+target_link_libraries(test-sqrt PRIVATE MathFunctions::MathFunctions
+                                        cmeel::tinyxml)
 add_test(NAME test-sqrt COMMAND test-sqrt)
